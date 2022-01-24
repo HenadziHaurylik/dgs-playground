@@ -1,0 +1,15 @@
+{
+  "name": "PlayGround GraphQL Schema",
+  "schemaPath": "schema/*.graphqls",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "http://localhost:8080/freshgql/graphiql",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}

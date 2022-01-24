@@ -1,0 +1,8 @@
+type Query {
+    customer: [Customer!]
+}
+type Customer{
+    id:ID
+    firstName:String
+    lastName:String
+}
