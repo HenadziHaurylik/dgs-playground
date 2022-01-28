@@ -2,9 +2,12 @@ package com.gena.playground.fetcher
 
 import com.gena.model.gql.types.Customer
 import com.gena.playground.api.ICustomerDataProvider
+import com.gena.playground.mapper.CustomerConverter
 import com.gena.playground.mapper.CustomerMapper
+import com.gena.playground.mapper.toCustomerReflection
 import com.netflix.graphql.dgs.DgsComponent
 import com.netflix.graphql.dgs.DgsQuery
+import org.mapstruct.factory.Mappers
 
 @DgsComponent
 class CustomerFetcher(
@@ -14,6 +17,9 @@ class CustomerFetcher(
     @DgsQuery
     fun customer(): List<Customer>? {
         val source=customerDataProvider.customersData()
-        return customerMapper.convert(source)
+      //  val converter= Mappers.getMapper(CustomerConverter::class.java)
+      //  val result= source?.map { converter.convertToModel(it) }
+        val result=source?.map { it.toCustomerReflection() }
+        return result //customerMapper.convert(source)
     }
 }

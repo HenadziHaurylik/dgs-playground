@@ -1,0 +1,4 @@
+type EnvInfo{
+    buildNumber: String
+    activeProfiles: String
+}

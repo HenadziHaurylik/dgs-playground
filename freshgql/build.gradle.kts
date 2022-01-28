@@ -6,6 +6,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
+    kotlin("kapt") version "1.6.10"
   //  id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
 }
 
@@ -18,6 +19,7 @@ repositories {
 }
 
 dependencies {
+    val mapstruct="1.4.2.Final"
     implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:latest.release"))
     implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter")
 
@@ -29,6 +31,13 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
     implementation(project(":freshgqlservices"))
+
+    implementation("org.mapstruct:mapstruct:$mapstruct")
+    kapt("org.mapstruct:mapstruct-processor:$mapstruct")
+
+    // https://mvnrepository.com/artifact/com.graphql-java/voyager-spring-boot-starter
+    implementation("com.graphql-java:voyager-spring-boot-starter:5.0.2")
+
 }
 
 tasks.withType<KotlinCompile> {
@@ -48,6 +57,9 @@ tasks.withType<com.netflix.graphql.dgs.codegen.gradle.GenerateJavaTask> {
     packageName = "com.gena.model.gql"
     generateClient = false
     language = "KOTLIN"
+}
+springBoot{
+    buildInfo()
 }
 /*
 ktlint {
