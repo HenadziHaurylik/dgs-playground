@@ -1,9 +1,5 @@
 name: Fresh GraphQL CI
 on: [push]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 jobs:
   echo:
     runs-on: ubuntu-latest
@@ -19,5 +15,3 @@ jobs:
         run: |
           echo "Add other actions to build,"
           echo "test, and deploy your project."
-
-
