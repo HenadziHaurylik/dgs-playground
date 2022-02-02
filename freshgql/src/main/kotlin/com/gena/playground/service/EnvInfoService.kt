@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 class EnvInfoService(
     private val buildProperties: BuildProperties,
 
-    ) {
+) {
     @Value("\${spring.profiles.active:}")
     private val activeProfile: String = ""
 
@@ -16,5 +16,4 @@ class EnvInfoService(
         buildProperties.version
 
     fun getActiveProfiles(): String = activeProfile
-
 }

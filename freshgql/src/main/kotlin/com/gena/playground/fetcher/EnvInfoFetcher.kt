@@ -9,12 +9,12 @@ import com.netflix.graphql.dgs.DgsQuery
 
 @DgsComponent
 class EnvInfoFetcher(
-    private val envInfoService: EnvInfoService
+    private val envInfoService: EnvInfoService,
+
 ) {
 
     @DgsQuery()
     fun envInfo(): EnvInfo = EnvInfo()
-
 
     @DgsData(
         parentType = DgsConstants.ENVINFO.TYPE_NAME,
@@ -29,5 +29,4 @@ class EnvInfoFetcher(
     )
     fun buildNumber(): String =
         envInfoService.getBuildNumber()
-
 }

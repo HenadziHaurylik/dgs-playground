@@ -11,7 +11,7 @@ class CustomerMapper {
         return if (source == null) null else
             source.map { Customer(it.id, it.firstName, it.lastName) }
     }
-    object CustomerMapperConstants{
-        const val USER_NAME_CONST="some username"
+    object CustomerMapperConstants {
+        const val USER_NAME_CONST = "some username"
     }
 }

@@ -7,7 +7,7 @@ plugins {
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
     kotlin("kapt") version "1.6.10"
-  //  id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
+    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
 }
 
 group = "com.gena"
@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    val mapstruct="1.4.2.Final"
+    val mapstruct = "1.4.2.Final"
     implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:latest.release"))
     implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter")
 
@@ -37,7 +37,6 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.graphql-java/voyager-spring-boot-starter
     implementation("com.graphql-java:voyager-spring-boot-starter:5.0.2")
-
 }
 
 tasks.withType<KotlinCompile> {
@@ -51,22 +50,21 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-
 tasks.withType<com.netflix.graphql.dgs.codegen.gradle.GenerateJavaTask> {
     schemaPaths = mutableListOf("${project.projectDir}/src/main/resources/schema")
     packageName = "com.gena.model.gql"
     generateClient = false
     language = "KOTLIN"
 }
-springBoot{
+springBoot {
     buildInfo()
 }
-/*
-ktlint {
-    enableExperimentalRules.set(true)
+configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+    outputToConsole.set(true)
+    outputColorName.set("RED")
+    ignoreFailures.set(false) // break task
     filter {
-        exclude("**generated/**")
-        exclude { projectDir.toURI().relativize(it.file.toURI()).path.contains("/generated/") }
+        exclude("*/generated/*")
+        include("*/kotlin/*")
     }
-*/
-
+}

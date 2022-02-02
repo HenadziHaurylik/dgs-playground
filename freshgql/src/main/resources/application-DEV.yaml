@@ -1,3 +1,5 @@
 graphql:
   voyager:
     enabled: true
+    basePath: /
+    mapping: /graphiql/voyager
