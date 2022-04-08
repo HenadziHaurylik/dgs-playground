@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Chrckout
+      - name: Checkout
         uses: actions/checkout@v2
 
       - name: Run a one-line script

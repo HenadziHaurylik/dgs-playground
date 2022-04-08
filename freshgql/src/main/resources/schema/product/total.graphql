@@ -1,0 +1,5 @@
+type Total{
+    price:Float!
+    tax:Float!
+    tip:Float!
+}

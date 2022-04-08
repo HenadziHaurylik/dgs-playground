@@ -1,4 +1,5 @@
 type Query {
+    product:Product
     customer: [Customer!]
     envInfo: EnvInfo
 }

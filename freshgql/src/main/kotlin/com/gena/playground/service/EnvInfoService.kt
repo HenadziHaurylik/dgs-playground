@@ -12,8 +12,10 @@ class EnvInfoService(
     @Value("\${spring.profiles.active:}")
     private val activeProfile: String = ""
 
-    fun getBuildNumber(): String =
-        buildProperties.version
+    fun getBuildNumber(): String {
+//        throw RuntimeException("Some Error")
+        return buildProperties.version
+    }
 
     fun getActiveProfiles(): String = activeProfile
 }
