@@ -17,7 +17,7 @@ class CustomerFetcher(
     fun customer(): List<Customer>? {
         val source = customerDataProvider.customersData()
         //  val converter= Mappers.getMapper(CustomerConverter::class.java)
-        //  val result= source?.map { converter.convertToModel(it) }
+       //   val result=customerMapper.toModel(source)
         val result = source?.map { it.toCustomerReflection() }
         return result // customerMapper.convert(source)
     }

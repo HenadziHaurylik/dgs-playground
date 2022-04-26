@@ -3,4 +3,12 @@ type Customer{
     id:ID
     firstName:String
     lastName:String
+    positions:[String]
+    addresses:[Address]
+}
+
+type Address {
+   zip:String
+   city:String
+   flat:Int
 }
