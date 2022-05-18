@@ -1,12 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("com.netflix.dgs.codegen") version "5.1.7"
     id("org.springframework.boot") version "2.4.13"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
-    kotlin("kapt") version "1.6.10"
+ //   kotlin("kapt") version "1.6.10"
  //   id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
 }
 
@@ -19,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    val mapstruct = "1.4.2.Final"
+ //   val mapstruct = "1.4.2.Final"
     implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:latest.release"))
     implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter")
 
@@ -31,9 +30,10 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("com.graphql-java:graphql-java-servlet:4.7.0")
     implementation(project(":freshgqlservices"))
+    api(project(":freshgqlmodels"))
 
-    implementation("org.mapstruct:mapstruct:$mapstruct")
-    kapt("org.mapstruct:mapstruct-processor:$mapstruct")
+ //   implementation("org.mapstruct:mapstruct:$mapstruct")
+ //   kapt("org.mapstruct:mapstruct-processor:$mapstruct")
 }
 
 tasks.withType<KotlinCompile> {
@@ -47,12 +47,6 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-tasks.withType<com.netflix.graphql.dgs.codegen.gradle.GenerateJavaTask> {
-    schemaPaths = mutableListOf("${project.projectDir}/src/main/resources/schema")
-    packageName = "com.gena.model.gql"
-    generateClient = false
-    language = "KOTLIN"
-}
 springBoot {
     buildInfo()
 }

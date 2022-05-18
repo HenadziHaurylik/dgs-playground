@@ -2,14 +2,14 @@ package com.gena.playground.fetcher
 
 import com.gena.model.gql.DgsConstants
 import com.gena.model.gql.types.EnvInfo
-import com.gena.playground.service.EnvInfoService
+import com.gena.playground.api.IEnvInfoService
 import com.gena.playground.util.logger
 import com.netflix.graphql.dgs.DgsComponent
 import com.netflix.graphql.dgs.DgsData
 import com.netflix.graphql.dgs.DgsQuery
 
 @DgsComponent
-class EnvInfoFetcher(private val envInfoService: EnvInfoService) {
+class EnvInfoFetcher(private val envInfoService: IEnvInfoService) {
 
     @DgsQuery()
     fun envInfo(): EnvInfo {
@@ -17,7 +17,7 @@ class EnvInfoFetcher(private val envInfoService: EnvInfoService) {
         logger.info("Info EnvInfo")
         logger.warn("Warn EnvInfo")
         logger.error("Error EnvInfo")
-        return EnvInfo()
+        return envInfoService.init()
     }
 
     @DgsData(

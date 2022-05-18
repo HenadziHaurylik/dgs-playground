@@ -2,4 +2,5 @@
 include 'FDStore'
 
 include 'freshgql'
+include 'freshgqlmodels'
 include 'freshgqlservices'
