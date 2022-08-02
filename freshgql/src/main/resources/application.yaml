@@ -1,3 +1,6 @@
+# main properties
 graphql:
+  tracing:
+    enabled: true
   voyager:
     enabled: false
