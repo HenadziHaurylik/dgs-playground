@@ -1,6 +1,5 @@
 # main properties
-# Additional comment
-# Additional comment2
+
 graphql:
   tracing:
     enabled: true
